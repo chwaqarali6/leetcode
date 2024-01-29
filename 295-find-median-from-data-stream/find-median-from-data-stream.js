@@ -9,7 +9,6 @@ var MedianFinder = function () {
  */
 MedianFinder.prototype.addNum = function (num) {
     const insertionPoint = getInsertionPoint(this.arr, num)
-    console.log(this.arr.length, insertionPoint)
     if (insertionPoint === 0) {
         this.arr.unshift(num)
     } else if (insertionPoint === this.arr.length) {
