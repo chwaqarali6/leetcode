@@ -4,7 +4,7 @@
  */
 var sortColors = function (nums) {
     const counts = [0, 0, 0]
-    nums.forEach(num => counts[num] += 1)
+    nums.forEach(num => ++counts[num])
 
     for (let i = 0; i < nums.length; i++) {
         if (counts[0] > 0) {
