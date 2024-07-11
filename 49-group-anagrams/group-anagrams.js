@@ -3,15 +3,11 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
-    const anagramMap = {}
-    const sortedStrs = strs.map((str) => str.split('').sort().join(''))
-    sortedStrs.forEach((str, index) => {
-        if (anagramMap[str]) {
-            anagramMap[str].push(strs[index])
-        } else {
-            anagramMap[str] = [strs[index]]
-        }
+    const buckets = {}
+    strs.forEach((str, index) => {
+        const sorted = str.split('').sort().join('')
+        buckets[sorted] ? buckets[sorted].push(str) : buckets[sorted] = [str]
     })
 
-    return Object.values(anagramMap)
+    return Object.values(buckets)
 };
