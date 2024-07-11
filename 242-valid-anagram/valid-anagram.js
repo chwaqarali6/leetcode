@@ -4,20 +4,11 @@
  * @return {boolean}
  */
 var isAnagram = function (s, t) {
-    if (s.length !== t.length) return false
-    const dictionary = {}
+    if (s.length !== t.length) return false;
 
-    for (let i = 0; i < s.length; i++) {
-        const ch = s[i]
-        if (dictionary[ch]) dictionary[ch] += 1
-        else dictionary[ch] = 1
-    }
-
-    for (let i = 0; i < t.length; i++) {
-        const ch = t[i]
-        if (dictionary[ch]) dictionary[ch] -= 1
-        else return false
-    }
+    const dict = {}
+    for (let c of s) dict[c] = (dict[c] || 0) + 1;
+    for (let c of t) if (!dict[c]--) return false;
 
     return true
 };
